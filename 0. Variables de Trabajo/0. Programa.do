@@ -7,6 +7,7 @@
 *- Contenido -*
 
     * Fuente de Información (GEIH) *
+    * Enlace para descargar las bases de información *
 
     https://drive.google.com/drive/folders/1ty1Ru6ew7cK_RQLJQsLsChTipVI3iBYf?usp=sharing
 
@@ -28,8 +29,18 @@
         
         use "GEIH_`i'", clear 
 
+        dis "-------------------------------------"
+        dis "GEIH_`i'"
+        dis "-------------------------------------"
+
+
     }
 
+
+*- Variables para tener en cuenta.
+
+    * Factor de Expanción -> fex_c_2011 
+    
 
 
 
