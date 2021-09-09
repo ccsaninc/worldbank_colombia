@@ -58,32 +58,32 @@ Esc_Tot	Esc_Tot_H	Esc_Tot_M	Esc_Tot_Jov	Esc_Tot_Adul	Esc_Tot_Adul_May	Esc_Tot_Mi
 
 		*- Identificacion de las 23 Ciudades 
 				
-		generate ciudad23 = 1 if area_2 == 5 | area_2==8 | area_2==11 | area_2==13 | area_2==15 | area_2==17 | area_2==18 | area_2==19 | area_2==20 ///
-		| area_2==23 | area_2==27 | area_2==41 | area_2==44 | area_2==47 | area_2==50 | area_2==52 | area_2==54 | area_2==63 | area_2==66 | area_2==68 ///
-		| area_2==70 | area_2==73 | area_2==76 |area_2==81 | area_2==85 | area_2==86 | area_2==88 | area_2==91 | area_2==94 | area_2==95 | area_2==97 ///
-		| area_2==99
+		generate ciudad23 = 1 if area  == 5 | area ==8 | area ==11 | area ==13 | area ==15 | area ==17 | area ==18 | area ==19 | area ==20 ///
+		| area ==23 | area ==27 | area ==41 | area ==44 | area ==47 | area ==50 | area ==52 | area ==54 | area ==63 | area ==66 | area ==68 ///
+		| area ==70 | area ==73 | area ==76 |area ==81 | area ==85 | area ==86 | area ==88 | area ==91 | area ==94 | area ==95 | area ==97 ///
+		| area ==99
 				
 		replace ciudad23 = 0 if ciudad23 != 1
 		label var ciudad23 "23 ciudades"				
 				
 		*- Dummy de 10 ciuades
 				
-		gen ciudad10 = 1 if area_2==15 | area_2==18 | area_2==19 | area_2==20 | area_2==27 | ///
-		area_2==41 | area_2==44 | area_2==47 | area_2==63 | area_2==70
+		gen ciudad10 = 1 if area ==15 | area ==18 | area ==19 | area ==20 | area ==27 | ///
+		area ==41 | area ==44 | area ==47 | area ==63 | area ==70
 		
 		replace ciudad10=0 if ciudad10!=1
 		label var ciudad10 "10 ciudades"
 			
 		*- Dummy Trece Areas 
 				
-		gen ciudad13=1 if area_2==5 | area_2==8 | area_2==11 | area_2==13 | area_2==17 | ///
-		area_2==23 | area_2==50 | area_2==52 | area_2==54 | area_2==66 | area_2==68 | area_2==73 | area_2==76
+		gen ciudad13=1 if area ==5 | area ==8 | area ==11 | area ==13 | area ==17 | ///
+		area ==23 | area ==50 | area ==52 | area ==54 | area ==66 | area ==68 | area ==73 | area ==76
 		replace ciudad13=0 if ciudad13!=1
 		label var ciudad13 "Areas Metropolitanas"
 				
 		*- Dummy Bogota (Capital)
 				
-		gen capital=1 if area_2==11 
+		gen capital=1 if area ==11 
 		replace capital=0 if capital!=1
 		label var capital "Bgotá D.C."
 				
@@ -98,6 +98,23 @@ Esc_Tot	Esc_Tot_H	Esc_Tot_M	Esc_Tot_Jov	Esc_Tot_Adul	Esc_Tot_Adul_May	Esc_Tot_Mi
 		gen otras_cabeceras = 1 if clase == "1" & ciudad23 !=1	
 		replace otras_cabeceras = 0 if otras_cabeceras != 1
 		label var otras_cabeceras "Otras Cabeceras - DANE"
+
+
+
+		*Edad quinquenios del Dane
+			
+			gen quin_DANE =.
+			replace quin_DANE =. if p6040<10
+			replace quin_DANE =1 if p6040>=10 & p6040<=13
+			replace quin_DANE =2 if p6040>=14 & p6040<=18
+			replace quin_DANE =3 if p6040>=19 & p6040<=22
+			replace quin_DANE =4 if p6040>=23 & p6040<=28
+			replace quin_DANE =5 if p6040>=29 & p6040<=35
+			replace quin_DANE =6 if p6040>=36 & p6040<=50
+			replace quin_DANE =7 if p6040>50 
+
+			lab define quin_DANE  1 "10-13" 2 "14-18" 3 "19-22" 4 "23-28" 5 "29-35" 6 "35-50" 7 "50 y más"
+			lab values quin_DANE  quin_DANE 
 
 
 
