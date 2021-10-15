@@ -45,6 +45,8 @@ global var_t "directorio secuencia_p orden fex_c_2011 mes pobtot sexo edad g_eta
 		
 		do "$ruta_do\4. PB_WorldBank_D_4_Informalidad.do"
 		
+		do "$ruta_do\4. PB_WorldBank_D_2_Calidad y Vida.do"
+		
 *--------- BASE FINAL PARA EL PROCEDIMIENTO DE EXTRACCIÓN DE DATOS -----------------------------*
 
  keep $var_t
@@ -97,8 +99,4 @@ D:\OneDrive - Universidad Externado de Colombia\1. Observatorio ML\1. Bases de D
  
  }
 
- 
-	 
-
-
-	 
+ * Fin de la rutina de trabajo *
