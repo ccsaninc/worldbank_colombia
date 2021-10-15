@@ -45,6 +45,8 @@ global var_t "directorio secuencia_p orden fex_c_2011 mes pobtot sexo edad g_eta
 		
 		do "$ruta_do\4. PB_WorldBank_D_4_Informalidad.do"
 		
+                * Verificar las variables que se calculan
+
 		do "$ruta_do\4. PB_WorldBank_D_2_Calidad y Vida.do"
 		
 *--------- BASE FINAL PARA EL PROCEDIMIENTO DE EXTRACCIÓN DE DATOS -----------------------------*
@@ -89,9 +91,14 @@ D:\OneDrive - Universidad Externado de Colombia\1. Observatorio ML\1. Bases de D
 
 	global ruta_do "F:\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files"
 	
-			
+		* Verificar las cateogiras de pobreza: 1) Unas estan dadas por la base, 2) calculo en base a las lineas de pobreza
+
+                do "$ruta_do\4. PB_WorldBank_D_2_Categorias_Pobreza.do"
+                	
 		
 *--------- BASE FINAL PARA EL PROCEDIMIENTO DE EXTRACCIÓN DE DATOS -----------------------------*
+
+ * Verificar las variables que deben incluirse (categorias de pobreza)       
 
  keep $var_t
  
