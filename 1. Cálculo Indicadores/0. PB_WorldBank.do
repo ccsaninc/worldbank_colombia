@@ -1,18 +1,18 @@
 ********************************************************************************************
 * Insitucion:   	Banco Mundial 
-* Autor: 		    Equipo de Trabajo 						  
-* Version:		    1.0
+* Autor: 		Equipo de trabajo Desarrollo Humano y Empleo en Colombia - Banco Mundial 						  
+* Version:		1.0
 * Descripción:		Cargué de informacion tablero - Banco Mundial
 *********************************************************************************************
 
-* --------------- VARIABLES PARAMETRICAS -------------* 
+* --------------- CÁLCULO DE LAS VARIABLES DE TRABAJO A PARTIR DE LA GEIH Y EL MODULO DE MIGRACIÓN -------------* 
 
-*- Base de trabajo paa el calculo de variables -*
-
-*- Base de trabajo -*
+*- Directorio de Trabajo
 
 cd "F:\OneDrive - Universidad Externado de Colombia\1. Observatorio ML\1. Bases de Datos\5. GEIH_Modulo_Migracion\3. GEIH_Mig"
-  
+ 
+*- Años de trabajo  
+
         local f_i 2016
         local f_f 2021
 		
@@ -44,33 +44,59 @@ global var_t "directorio secuencia_p orden fex_c_2011 mes pobtot sexo edad g_eta
 		do "$ruta_do\3. PB_WorldBank_D_4_Empleo_Ind_Generales.do"
 		
 		do "$ruta_do\4. PB_WorldBank_D_4_Informalidad.do"
-
-	
-*--------- BASE FINAL PARA CARGAR ---------------------------------*
+		
+		do "$ruta_do\4. PB_WorldBank_D_2_Calidad y Vida.do"
+		
+*--------- BASE FINAL PARA EL PROCEDIMIENTO DE EXTRACCIÓN DE DATOS -----------------------------*
 
  keep $var_t
  
  save "F:\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files\Data\DataPB_Wb_`i'.dta", replace
  
-     }
-	 
-/*
-	 
-	global l_mes "01"
+ }
+ 
+ *----------------------------------------------------------------------------------------------
+  
+* --------------- CÁLCULO DE LAS VARIABLES DE TRABAJO A PARTIR DE LA GEIH Y MESEP -------------*  
+* -Dada la naturaleza de la MESEP, el calculo de las variables esta resagado en un año.
 
+*- Directorio de Trabajo
+
+*- Directorio de las bases de trabajo -*
+C:\Users\asistobservatorioml\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files\Data
+
+*- Directorio - Base de Pobreza -* 
+D:\OneDrive - Universidad Externado de Colombia\1. Observatorio ML\1. Bases de Datos\3. MESEP\1. Stata
+ 
+*- Años de trabajo  
+
+        local f_i 2016
+        local f_f 2020
+
+*- Procedimiento
 
     forvalues i = `f_i' / `f_f' {
+        
+        use "DataPB_Wb_`i'", clear 
 		
-		foreach mes in $l_mes {
-			
-			cd "F:\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files\Data"
-			use "DataPB_Wb_`i'.dta" , clear	 
-			
-			keep $var_t if mes == `mes'
-			
-			save "DataPB_Wb_`i'_$mes.dta" , replace
-	
-	}  
+	merge 1:1 directorio secuencia_p orden using " "
 
-} 
-	 
+        dis "-------------------------------------"
+        dis "GEIH_Mig_MESEP_`i'"
+        dis "-------------------------------------"
+
+* - Variables parametricas -*
+
+	global ruta_do "F:\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files"
+	
+			
+		
+*--------- BASE FINAL PARA EL PROCEDIMIENTO DE EXTRACCIÓN DE DATOS -----------------------------*
+
+ keep $var_t
+ 
+ save "F:\OneDrive - Universidad de los Andes\10. Banco Mundial\5. Power BI - WorldBank\2. Power BI\2. Indicadores_Colombia\Version 2\0. Do_Files\Data\DataPB_Wb_`i'.dta", replace
+ 
+ }
+
+ * Fin de la rutina de trabajo *
