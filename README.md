@@ -1,8 +1,8 @@
 
 # Tablero "Monitor de Empleo para Colombia"
-En el presente repositorio se agrupas los diferentes algoritmos para al cálculo de los
+En el presente repositorio se agrupan los diferentes algoritmos para al cálculo de los
 indicadores presentes en el tablero de control. Así mismo, se establece la ruta para el
-acceso a los microdatos usados para el cálculo.  
+acceso a los microdatos usados para el cálculo.
 
 Link de acceso a los microdatos:
 
