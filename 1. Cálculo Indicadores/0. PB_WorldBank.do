@@ -60,7 +60,7 @@ global var_t "directorio secuencia_p orden fex_c_2011 mes pobtot sexo edad g_eta
  *----------------------------------------------------------------------------------------------
   
 * --------------- CÁLCULO DE LAS VARIABLES DE TRABAJO A PARTIR DE LA GEIH Y MESEP -------------*  
-* -Dada la naturaleza de la MESEP, el calculo de las variables esta resagado en un año.
+*- Dada la naturaleza de la MESEP, el calculo de las variables esta resagado en un año.
 
 *- Directorio de Trabajo
 
